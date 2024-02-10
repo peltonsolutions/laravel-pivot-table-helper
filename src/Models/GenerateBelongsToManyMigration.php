@@ -1,6 +1,6 @@
 <?php
 
-namespace PeltonSolutions\LaravelPivotTableHelper;
+namespace PeltonSolutions\LaravelPivotTableHelper\Models;
 
 use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
