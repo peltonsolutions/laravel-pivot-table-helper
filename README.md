@@ -10,6 +10,39 @@ You can install the package via composer using the following command:
 composer require peltonsolutions/laravel-pivot-table-helper
 ```
 
+## Usage
+
+```php
+<?php
+
+use App\Models\User;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
+use PeltonSolutions\LaravelPivotTableHelper\Models\GenerateBelongsToManyMigration;
+
+return new class extends Migration {
+	/**
+	 * Run the migrations.
+	 */
+	public function up(): void
+	{
+		GenerateBelongsToManyMigration::createMigration(
+			(new User())->roles()
+		);
+	}
+
+	/**
+	 * Reverse the migrations.
+	 */
+	public function down(): void
+	{
+		Schema::dropIfExists((new User())->roles()->getTable());
+	}
+};
+
+
+```
+
 ### Security
 
 If you discover any security-related issues, please
