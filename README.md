@@ -1,0 +1,1 @@
+# laravel-pivot-table-helper
