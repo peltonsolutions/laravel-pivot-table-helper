@@ -8,6 +8,9 @@ Description WIP
 - add morphToMany
 - add command to automatically create the migration file from a model/relationship
 - If the target table already exists, update the table instead
+- Add "down" generation, which determines if the target table only has the two column relationship or not. If it only
+  has these two fields, it will drop the table. If it has more fields, it will remove the column for the relationship
+  column.
 
 ## Install
 
@@ -50,6 +53,8 @@ return new class extends Migration {
 
 ```
 
+Or, you can pass an array of relationships. This assumes it's sharing the same pivot table, and the same parent class
+
 ```php
 <?php
 
@@ -64,9 +69,11 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		GenerateBelongsToManyMigration::createMigration(
-			(new User())->roles()
-		);
+	    $instance = new User();
+		GenerateBelongsToManyMigration::createMigration([
+			$instance->relationship1(),
+			$instance->relationship2(),
+		]);
 	}
 
 	/**
