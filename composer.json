@@ -8,6 +8,7 @@
     "migration"
   ],
   "homepage": "https://github.com/peltonsolutions/laravel-pivot-table-helper",
+  "license": "MIT",
   "authors": [
     {
       "name": "Nathan Pelton",
