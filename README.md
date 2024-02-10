@@ -1,6 +1,13 @@
 # laravel-pivot-table-helper
 
-Instructions WIP
+Description WIP
+
+## Things to add
+
+- allow nullable relationships, when you have multiple
+- add morphToMany
+- add command to automatically create the migration file from a model/relationship
+- If the target table already exists, update the table instead
 
 ## Install
 
@@ -11,6 +18,37 @@ composer require peltonsolutions/laravel-pivot-table-helper
 ```
 
 ## Usage
+
+```php
+<?php
+
+use App\Models\User;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
+use PeltonSolutions\LaravelPivotTableHelper\Models\GenerateBelongsToManyMigration;
+
+return new class extends Migration {
+	/**
+	 * Run the migrations.
+	 */
+	public function up(): void
+	{
+		GenerateBelongsToManyMigration::createMigration(
+			(new User())->roles()
+		);
+	}
+
+	/**
+	 * Reverse the migrations.
+	 */
+	public function down(): void
+	{
+		Schema::dropIfExists((new User())->roles()->getTable());
+	}
+};
+
+
+```
 
 ```php
 <?php
