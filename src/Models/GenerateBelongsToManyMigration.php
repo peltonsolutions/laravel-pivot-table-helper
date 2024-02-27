@@ -38,14 +38,21 @@ class GenerateBelongsToManyMigration
 						$table->uuid($pivotInstance->getKeyName())->primary();
 					}
 					$table->foreignIdFor(get_class($belongsToMany->getParent()))
-						  ->constrained(column: $belongsToMany->getParent()->getKeyName())
+						  ->constrained(
+							  column: $belongsToMany->getParent()->getKeyName(),
+							  indexName: $belongsToMany->getParent()->getKeyName().'_foreign',
+						  )
 						  ->cascadeOnUpdate()->cascadeOnDelete();
 
 					foreach ($array as $relationship) {
 						if ($relationship instanceof BelongsToMany) {
 							$relatedClassName = get_class($relationship->getRelated());
+							$instance = new $relatedClassName;
 							$table->foreignIdFor($relatedClassName)
-								  ->constrained(column: (new $relatedClassName)->getKeyName())
+								  ->constrained(
+									  column: $instance->getKeyName(),
+									  indexName: $instance->getKeyName().'_foreign',
+								  )
 								  ->cascadeOnUpdate()->cascadeOnDelete();
 						}
 					}
