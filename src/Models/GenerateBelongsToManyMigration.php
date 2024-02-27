@@ -40,8 +40,9 @@ class GenerateBelongsToManyMigration
 					$table->foreignIdFor(get_class($belongsToMany->getParent()))
 						  ->constrained(
 							  column: $belongsToMany->getParent()->getKeyName(),
-							  indexName: $belongsToMany->getParent()->getTable().'_'.$belongsToMany->getParent()
-																								   ->getKeyName().'_foreign',
+							  indexName: 'foreign_'.md5($table->getTable()
+								  .'_'.$belongsToMany->getParent()->getTable()
+								  .'_'.$belongsToMany->getParent()->getKeyName()),
 						  )
 						  ->cascadeOnUpdate()->cascadeOnDelete();
 
@@ -52,7 +53,9 @@ class GenerateBelongsToManyMigration
 							$table->foreignIdFor($relatedClassName)
 								  ->constrained(
 									  column: $instance->getKeyName(),
-									  indexName: $instance->getTable().'_'.$instance->getKeyName().'_foreign',
+									  indexName: 'foreign_'.md5($table->getTable()
+										  .'_'.$instance->getTable()
+										  .'_'.$instance->getKeyName()),
 								  )
 								  ->cascadeOnUpdate()->cascadeOnDelete();
 						}
