@@ -2,47 +2,47 @@
   "name": "peltonsolutions/laravel-pivot-table-helper",
   "description": "A custom package for Laravel to assist with creating BelongsToMany pivot migrations.",
   "keywords": [
-    "peltonsolutions",
-    "laravel",
-    "belongstomany",
-    "migration"
+	"peltonsolutions",
+	"laravel",
+	"belongstomany",
+	"migration"
   ],
   "homepage": "https://github.com/peltonsolutions/laravel-pivot-table-helper",
   "license": "MIT",
   "authors": [
-    {
-      "name": "Nathan Pelton",
-      "email": "npelton@gmail.com",
-      "homepage": "https://www.nathanpelton.com",
-      "role": "Developer"
-    }
+	{
+	  "name": "Nathan Pelton",
+	  "email": "npelton@gmail.com",
+	  "homepage": "https://www.nathanpelton.com",
+	  "role": "Developer"
+	}
   ],
   "require": {
-    "php": "^8.2",
-    "laravel/framework": "^v10.43.0"
+	"php": "^8.2",
+	"laravel/framework": "^11.0"
   },
   "require-dev": {
-    "pestphp/pest": "^2.33",
-    "pestphp/pest-plugin-livewire": "^2.1"
+	"pestphp/pest": "^2.33",
+	"pestphp/pest-plugin-livewire": "^2.1"
   },
   "autoload": {
-    "psr-4": {
-      "PeltonSolutions\\LaravelPivotTableHelper\\": "src/"
-    }
+	"psr-4": {
+	  "PeltonSolutions\\LaravelPivotTableHelper\\": "src/"
+	}
   },
   "autoload-dev": {
-    "psr-4": {
-      "PeltonSolutions\\LaravelPivotTableHelper\\Tests\\": "tests/"
-    }
+	"psr-4": {
+	  "PeltonSolutions\\LaravelPivotTableHelper\\Tests\\": "tests/"
+	}
   },
   "scripts": {
-    "test": "vendor/bin/pest"
+	"test": "vendor/bin/pest"
   },
   "config": {
-    "sort-packages": true,
-    "allow-plugins": {
-      "pestphp/pest-plugin": true
-    }
+	"sort-packages": true,
+	"allow-plugins": {
+	  "pestphp/pest-plugin": true
+	}
   },
   "minimum-stability": "dev",
   "prefer-stable": true
